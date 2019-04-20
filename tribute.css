@@ -1,0 +1,19 @@
+#image {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#img-caption {
+ text-align: center;
+ color: #dd5fca;
+ font-family: verdana;
+ font-size: 120%;
+}
+#main {
+background-color: #035fca;
+}
+#title,#tribute-info {
+text-align: center;
+}
