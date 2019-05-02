@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1 id="title">
+    Box-Office Survey
+    <h1>
+    <div id="survey">
+      <p id="description">This survey form will ask few questions about your recent movie experience.</p>
+      <form id="survey-form">
+        <div class="rowfield">
+          <div class="desc-col">
+            <label for="name" id="name-label">Name</label>
+          </div>
+          <div class="val-col">
+            <input autofocus id="name" type="text" name="name" placeholder="Name" required >
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <label for="email" id="email-label">Email ID</label>
+          </div>
+          <div class="val-col">
+            <input autofocus id="email" type="email" name="email" placeholder="Email" pattern=".+@.+\.com" required >
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <label for="number" id="number-label">Age</label>
+          </div>
+          <div class="val-col">
+            <input autofocus id="number" type="number" name="number" placeholder="Number" min="10" max="100" value="10" step="1">
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <label for="movies">Movie Watched:</label>
+          </div>
+          <div class="val-col">
+            <select id="dropdown">
+              <option value="">Please select an option</option>
+              <option value="Avengers: Endgame">Avengers: Endgame</option>
+              <option value="Uri: The Surgical Strike">Uri: The Surgical Strike</option>
+              <option value="Gully Boy">Gully Boy</option>
+              <option value="Manikarnika">Manikarnika</option>
+              <option value="Kesari">Kesari</option>
+            </select>
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <label for="rating">Rating</label>
+          </div>
+          <div class="val-col">
+            <input id="rating" type="radio" name="rating" value="5">5</br>
+            <input type="radio" name="rating" id="rating" value="4">4</br>
+            <input type="radio" name="rating" id="rating" value="3">3</br>
+            <input type="radio" name="rating" id="rating" value="2">2</br>
+            <input type="radio" name="rating" id="rating" value="1">1</br>
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <label for="Genre">Genre</label>
+          </div>
+          <div class="val-col">
+            <input type="checkbox" value="Action">Action</input>
+            <input type="checkbox" value="Drama">Drama</input>
+            <input type="checkbox" value="Romance">Romance</input>
+            <input type="checkbox" value="Comedy">Comedy</input>
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <p>Enter any additonal Reviews</p>
+          </div>
+          <div class="val-col">
+            <textarea placeholder="Additional comments:"></textarea>
+          </div>
+        </div>
+        <div class="rowfield">
+          <div class="desc-col">
+            <button type="submit" value="Submit" id="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</html>

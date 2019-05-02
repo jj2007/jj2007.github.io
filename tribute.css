@@ -13,7 +13,15 @@
 }
 #main {
 background-color: #035fca;
+color: white;
 }
 #title,#tribute-info {
 text-align: center;
+}
+#tribute-link{
+margin-left:250px;
+}
+.mylist {
+ font-family: Trebuchet MS, sans-serif;
+ font-size: 100%;
 }
