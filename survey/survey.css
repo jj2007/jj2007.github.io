@@ -13,31 +13,52 @@ html, body {
   font-family: 'Noto Sans', sans-serif;
   min-width: 320px;
 }
+#description {
+  font-size: 20px;
+}
+.rowfield {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  flex-grow: 1;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+}
 .desc-col {
-  display: inline-block;
-  text-align: left;
-  width: 40%;
-  padding: 5px;
-  vertical-align: top;
-  margin-top: 10px;
+  width: 50%; 
 }
 .val-col {
-  display: grid;
+  width: 50%;
+  display: flex;
+}
+#rating {
+  align-items: flex-start;
+  flex: auto;
 }
 #survey-form {
-  display: flex;
-  flex-flow: column wrap;
+  width: 100%;
   font-size: 0.5em;
 }
 select,input {
-  width: 35%;
+  width: 85%;
   padding: 12px 20px;
   margin: 8px 10;
   box-sizing: border-box;
 }
 input:valid {
-  border: 2px solid gray
+  border: 1.5px solid green
 }
 input:invalid {
-  border: 2px dashed red
+  border: 1.5px dashed red
+}
+#submit {
+  color: white;
+  background-color: brown;
+  width: 70%;
+  height: 100%;
+  border-radius: 5px;
+}
+textarea {
+  width: 100%;
+  font-size: 1em;
 }

@@ -30,7 +30,7 @@
             <label for="number" id="number-label">Age</label>
           </div>
           <div class="val-col">
-            <input autofocus id="number" type="number" name="number" placeholder="Number" min="10" max="100" value="10" step="1">
+            <input autofocus id="number" type="number" name="number" placeholder="Number" min="18" max="100" value="18" step="1">
           </div>
         </div>
         <div class="rowfield">
