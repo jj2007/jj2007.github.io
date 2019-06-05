@@ -1,0 +1,13 @@
+
+#nav-bar {
+    top: 0;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+}
+
+@media (min-height: 700px) {
+    p {
+        font-size: 10px
+    }
+ }
