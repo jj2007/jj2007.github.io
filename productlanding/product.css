@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Ruge+Boogie&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
 header {
   display: flex;
   justify-content: space-around;
-  align-itmes: center;
+  align-items: center;
 }
 nav {
   diplay: flex;
@@ -13,19 +13,13 @@ h1 {
   display: flex;
   justify-content: center;
 }
-#nav-bar {
-    top: 0;
-    width: 100%;
-    height: 50px;
-    position: fixed;
-}
 table, th, td {
   border: 1px solid #333;
   border-collapse: collapse;
 }
 body {
   background-color: #05ffb0;;
-  font-family: 'Ruge Boogie', cursive; 
+  font-family: 'Indie Flower', cursive; 
 }
 @media (min-height: 700px) {
     p {
@@ -35,4 +29,10 @@ body {
 img {
   width: 100%;
   height: auto;
+}
+#logo {
+  width: 30vw;
+}
+.header-img {
+  height: 100%; 
 }

@@ -1,15 +1,21 @@
 <html>
    <header id="header">
      <meta charset="utf-8">
-     <h1>Indian Handicraft Items</h1>   
+     <div class="logo">
+        <img id="header-img" 
+             src="https://5.imimg.com/data5/KL/FD/MY-2464511/cow-krishna-showpiece-gold-plated-01-250x250.jpeg" 
+             alt="HandCraft Logo"
+         > 
+     </div>
+     <h1>Indian Handicraft Items</h1>
      <nav id="nav-bar">
-       <a class="nav-link" href="#video">Video</a>
+       <a class="nav-link" href="#info">Info_Video</a>
        <a class="nav-link" href="#description">Description</a>
        <a class="nav-link" href="#pricing">Pricing</a>
      </nav>  
   </header>
   <body>
-      <img id="header-img" src="https://4.imimg.com/data4/OO/NT/ANDROID-39781721/product-500x500.jpeg" alt="HandCraft Pieces">  
+      <img id="company-img" src="https://4.imimg.com/data4/OO/NT/ANDROID-39781721/product-500x500.jpeg" alt="HandCraft Pieces">  
     <div class="info">
       <div class="spec">
         <h2>Product Specifications</h2>
@@ -35,13 +41,12 @@
         <p>The prices start with 300Rs. and the maximum quantity for eact item is 100.</p>
       </div>
     </div>
-      <video id="video" width="320" height="240" controls>
-        <source src="https://www.youtube.com/watch?v=UVfliP6A8cU" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>
+      <section id="info">
+        <iframe id="video" width="765" height="421" src="https://www.youtube.com/embed/UVfliP6A8cU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </section>
       <form id="form" action="https://www.freecodecamp.com/email-submit" method="post">More Catalogue:
-        <input id="email" type="email" placeholder="email" >
-        <button id="submit" type="submit">Submit for more Info</button>
+        <input name="email" id="email" type="email" placeholder="email" >
+        <input id="submit" type="submit">
       </form>
 
     </body>
