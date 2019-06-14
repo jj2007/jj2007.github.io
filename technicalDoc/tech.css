@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 header {
   display: flex;
   justify-content: space-around;
@@ -15,7 +15,7 @@ h1 {
 }
 p {
   background-color: #05ffb0;
-  font-family: "Indie Flower", cursive;
+  font-family: "Muli", cursive;
 }
 @media (min-height: 700px) {
   p {
@@ -25,4 +25,17 @@ p {
 img {
   width: 100%;
   height: auto;
+}
+code {
+  display: block;
+  text-align: left;
+  white-space: pre-wrap;
+  position: relative;
+  word-break: break-word;
+  word-wrap: normal;
+  line-height: 2;
+  background-color: #f7e7f7;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
 }
