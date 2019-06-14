@@ -14,7 +14,6 @@ h1 {
   justify-content: center;
 }
 p {
-  background-color: #05ffb0;
   font-family: "Muli", cursive;
 }
 @media (min-height: 700px) {

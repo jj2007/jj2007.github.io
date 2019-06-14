@@ -22,15 +22,11 @@
           >Building Your Own Hooks</a
         >
       </li>
-      <li>
-        <a class="nav-link" href="#Hooks API reference">Hooks API reference</a>
-      </li>
-      <li><a class="nav-link" href="#Hooks FAQ">Hooks FAQ</a></li>
     </ul>
   </nav>
   <main id="main-doc">
     <section class="main-section" id="Introduction">
-      <header>Introduction</header>
+      <header><h1>Introduction</h1></header>
       <article>
         <p>
           Hooks are a new addition in React 16.8. They let you use state and
@@ -365,17 +361,307 @@ function Todos() {
 </code></pre>
       </article>
     </section>
-    <section class="main-section">
-      <header></header>
-      <p></p>
-      <code></code>
-      <p></p>
+    <section class="main-section" id="Using the State Hook">
+      <header>Using the State Hook</header>
+      <article>
+        <h3>What is a Hook?</h3>
+        <p>
+          A Hook is a special function that lets you “hook into” React features.
+          For example, useState is a Hook that lets you add React state to
+          function components. We’ll learn other Hooks later.
+        </p>
+        <h3>When would I use a Hook?</h3>
+        <p>
+          If you write a function component and realize you need to add some
+          state to it, previously you had to convert it to a class. Now you can
+          use a Hook inside the existing function component. We’re going to do
+          that right now!
+        </p>
+
+        <h3>Declaring a State Variable</h3>
+        <p>
+          In a class, we initialize the count state to 0 by setting this.state
+          to { count: 0 } in the constructor:
+        </p>
+        <pre><code>
+        class Example extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              count: 0
+            };
+          }
+        </code></pre>
+
+        <p>
+          In a function component, we have no this, so we can’t assign or read
+          this.state. Instead, we call the useState Hook directly inside our
+          component:
+        </p>
+        <pre><code>
+        import React, { useState } from 'react';
+        
+        function Example() {
+          // Declare a new state variable, which we'll call "count"
+          const [count, setCount] = useState(0);
+        </code></pre>
+        <p>
+          What does calling useState do? It declares a “state variable”. Our
+          variable is called count but we could call it anything else, like
+          banana. This is a way to “preserve” some values between the function
+          calls — useState is a new way to use the exact same capabilities that
+          this.state provides in a class. Normally, variables “disappear” when
+          the function exits but state variables are preserved by React. What do
+          we pass to useState as an argument? The only argument to the
+          useState() Hook is the initial state. Unlike with classes, the state
+          doesn’t have to be an object. We can keep a number or a string if
+          that’s all we need. In our example, we just want a number for how many
+          times the user clicked, so pass 0 as initial state for our variable.
+          (If we wanted to store two different values in state, we would call
+          useState() twice.) What does useState return? It returns a pair of
+          values: the current state and a function that updates it. This is why
+          we write const [count, setCount] = useState(). This is similar to
+          this.state.count and this.setState in a class, except you get them in
+          a pair. If you’re not familiar with the syntax we used, we’ll come
+          back to it at the bottom of this page. Now that we know what the
+          useState Hook does, our example should make more sense:
+        </p>
+        <pre><code>
+        import React, { useState } from 'react';
+        
+        function Example() {
+          // Declare a new state variable, which we'll call "count"
+          const [count, setCount] = useState(0);
+        </code></pre>
+        <p>
+          We declare a state variable called count, and set it to 0. React will
+          remember its current value between re-renders, and provide the most
+          recent one to our function. If we want to update the current count, we
+          can call setCount. “Create” wouldn’t be quite accurate because the
+          state is only created the first time our component renders. During the
+          next renders, useState gives us the current state. Otherwise it
+          wouldn’t be “state” at all! There’s also a reason why Hook names
+          always start with use. We’ll learn why later in the Rules of Hooks.
+        </p>
+        <h3>Reading State</h3>
+        <p>
+          When we want to display the current count in a class, we read
+          this.state.count: // You clicked {this.state.count} times In a
+          function, we can use count directly: //You clicked {count} times
+        </p>
+        <h3>Updating State</h3>
+        <p>
+          In a class, we need to call this.setState() to update the count state:
+        </p>
+        <pre><code>
+          &ltbutton onClick={() => this.setState({ count: this.state.count + 1 })}>
+            Click me
+            &lt/button>
+        In a function, we already have setCount and count as variables so we don’t need this:
+        
+        &ltbutton onClick={() => setCount(count + 1)}>
+            Click me
+          &lt/button>
+        </code></pre>
+      </article>
     </section>
-    <section class="main-section">
-      <header></header>
-      <p></p>
-      <code></code>
-      <p></p>
+    <section class="main-section" id="Using the Effect Hook">
+      <header>Using the Effect Hook</header>
+      <article>
+      <p>The Effect Hook lets you perform side effects in function components:</p>
+<pre><code>
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &ltdiv>
+      &ltp>You clicked {count} times</p>
+      &ltbutton onClick={() => setCount(count + 1)}>
+        Click me
+      &lt/button>
+    &lt/div>
+  );
+}
+</code></pre>
+<p>
+This snippet is based on the counter example from the previous page, but we added a new feature to it: we set the document title to a custom message including the number of clicks.
+
+Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects. Whether or not you’re used to calling these operations “side effects” (or just “effects”), you’ve likely performed them in your components before.
+</p>
+<h3>Effects Without Cleanup</h3>
+<p>
+Sometimes, we want to run some additional code after React has updated the DOM. Network requests, manual DOM mutations, and logging are common examples of effects that don’t require a cleanup. We say that because we can run them and immediately forget about them. Let’s compare how classes and Hooks let us express such side effects.
+</p>
+<h3>Example Using Classes</h3>
+<p>
+In React class components, the render method itself shouldn’t cause side effects. It would be too early — we typically want to perform our effects after React has updated the DOM.
+
+This is why in React classes, we put side effects into componentDidMount and componentDidUpdate. Coming back to our example, here is a React counter class component that updates the document title right after React makes changes to the DOM:
+</p>
+<pre><code>
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  render() {
+    return (
+      &ltdiv>
+      &ltp>You clicked {this.state.count} times</p>
+        &ltbutton onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        &lt/button>
+      &lt/div>
+    );
+  }
+}
+</code></pre>
+<p>Note how we have to duplicate the code between these two lifecycle methods in class.
+
+This is because in many cases we want to perform the same side effect regardless of whether the component just mounted, or if it has been updated. Conceptually, we want it to happen after every render — but React class components don’t have a method like this. We could extract a separate method but we would still have to call it in two places.
+
+Now let’s see how we can do the same with the useEffect Hook.
+
+Example Using Hooks
+We’ve already seen this example at the top of this page, but let’s take a closer look at it:
+</p>
+<pre><code>
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &ltdiv>
+      &ltp>You clicked {count} times</p>
+        &ltbutton onClick={() => setCount(count + 1)}>
+          Click me
+        &lt/button>
+    &lt/div>
+  );
+}
+</code></pre>
+<h3>What does useEffect do?</h3> <p>By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we’ll refer to it as our “effect”), and call it later after performing the DOM updates. In this effect, we set the document title, but we could also perform data fetching or call some other imperative API.
+
+<b>Why is useEffect called inside a component?</b> Placing useEffect inside the component lets us access the count state variable (or any props) right from the effect. We don’t need a special API to read it — it’s already in the function scope. Hooks embrace JavaScript closures and avoid introducing React-specific APIs where JavaScript already provides a solution.
+
+<b>Does useEffect run after every render?</b> Yes! By default, it runs both after the first render and after every update. (We will later talk about how to customize this.) Instead of thinking in terms of “mounting” and “updating”, you might find it easier to think that effects happen “after render”. React guarantees the DOM has been updated by the time it runs the effects.
+</p>
+<h3>Detailed Explanation</h3>
+<p>Now that we know more about effects, these lines should make sense:</p>
+<pre><code>
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+</code></pre>
+<p>
+We declare the count state variable, and then we tell React we need to use an effect. We pass a function to the useEffect Hook. This function we pass is our effect. Inside our effect, we set the document title using the document.title browser API. We can read the latest count inside the effect because it’s in the scope of our function. When React renders our component, it will remember the effect we used, and then run our effect after updating the DOM. This happens for every render, including the first one.
+
+Experienced JavaScript developers might notice that the function passed to useEffect is going to be different on every render. This is intentional. In fact, this is what lets us read the count value from inside the effect without worrying about it getting stale. Every time we re-render, we schedule a different effect, replacing the previous one. In a way, this makes the effects behave more like a part of the render result — each effect “belongs” to a particular render. We will see more clearly why this is useful later on this page.
+</p>
+<h3>Effects with Cleanup</h3>
+<p>Earlier, we looked at how to express side effects that don’t require any cleanup. However, some effects do. For example, we might want to set up a subscription to some external data source. In that case, it is important to clean up so that we don’t introduce a memory leak! Let’s compare how we can do it with classes and with Hooks.
+</p>
+<h3>Example Using Classes</h3>
+<p>In a React class, you would typically set up a subscription in componentDidMount, and clean it up in componentWillUnmount. For example, let’s say we have a ChatAPI module that lets us subscribe to a friend’s online status. Here’s how we might subscribe and display that status using a class:
+</p>
+<pre><code>
+class FriendStatus extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isOnline: null };
+    this.handleStatusChange = this.handleStatusChange.bind(this);
+  }
+
+  componentDidMount() {
+    ChatAPI.subscribeToFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+  componentWillUnmount() {
+    ChatAPI.unsubscribeFromFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+  handleStatusChange(status) {
+    this.setState({
+      isOnline: status.isOnline
+    });
+  }
+
+  render() {
+    if (this.state.isOnline === null) {
+      return 'Loading...';
+    }
+    return this.state.isOnline ? 'Online' : 'Offline';
+  }
+}
+</code></pre>
+<p>Notice how componentDidMount and componentWillUnmount need to mirror each other. Lifecycle methods force us to split this logic even though conceptually code in both of them is related to the same effect.
+<b>Example Using Hooks</b>
+Let’s see how we could write this component with Hooks.
+
+You might be thinking that we’d need a separate effect to perform the cleanup. But code for adding and removing a subscription is so tightly related that useEffect is designed to keep it together. If your effect returns a function, React will run it when it is time to clean up:
+</p>
+<pre><code>
+import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+</code></pre>
+<p>
+Why did we return a function from our effect? This is the optional cleanup mechanism for effects. Every effect may return a function that cleans up after it. This lets us keep the logic for adding and removing subscriptions close to each other. They’re part of the same effect!
+
+When exactly does React clean up an effect? React performs the cleanup when the component unmounts. However, as we learned earlier, effects run for every render and not just once. This is why React also cleans up effects from the previous render before running the effects next time. We’ll discuss why this helps avoid bugs and how to opt out of this behavior in case it creates performance issues later below.
+</p></article>
     </section>
     <section class="main-section">
       <header></header>
