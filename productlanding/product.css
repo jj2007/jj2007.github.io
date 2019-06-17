@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 header {
   display: flex;
   justify-content: space-around;
@@ -9,9 +9,19 @@ nav {
   flex-direction: row;
   justify-content: space-around;
 }
+#nav-bar a {
+  color: #222 
+}
 h1 {
   display: flex;
   justify-content: center;
+  font-family: cursive;
+  font-size: 40px;
+  color: brown;
+}
+.info1 {
+  display: flex;
+  justify-content: space-around;
 }
 table, th, td {
   border: 1px solid #333;
@@ -19,20 +29,43 @@ table, th, td {
 }
 body {
   background-color: #05ffb0;;
-  font-family: 'Indie Flower', cursive; 
+  font-family: 'Muli', cursive; 
 }
-@media (min-height: 700px) {
-    p {
-        font-size: 10px;
-    }
- }
-img {
-  width: 100%;
-  height: auto;
+p, a,form {
+  font-size: 20px;
+  text-decoration: none;
 }
-#logo {
+#video {
+  border-radius: 10%;
+  margin: auto auto;
+  display: block;
+  width: 500px;
+}
+@media (max-width: 700px) {
+  p {
+    font-size: 10px;
+  }
+  nav {
+    position: relative;
+    diplay: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+#company-img {
+  width: auto;
+  height: 200px;
+  border: 1px solid #777;
+  border-radius: 10%;
+}
+.logo {
   width: 30vw;
 }
-.header-img {
-  height: 100%; 
+
+#header-img {
+  height: 50%;
+  border: 1px solid #777;
+  border-radius: 50%;
+  padding: 5px;
+  width: 150px;
 }
