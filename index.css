@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Arvo&display=swap");
+#doc {
+  font-family: "Arvo", serif;
+  background-color: #8f9193;
+}
+.project-tile {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
