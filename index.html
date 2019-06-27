@@ -1,22 +1,38 @@
 <html>
   <!-- START NAV -->
+  <head>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
   <header>
     <nav id="navbar">
-      <a class="nav-link" href="#welcome-section">About</a>
-      <a class="nav-link" href="#projects">Work</a>
-      <a class="nav-link" href="#contact">Contact</a>
+      <a class="nav-link btn btn-info" href="#welcome-section"
+        ><i class="fas fa-info"></i>About</a
+      >
+      <a class="nav-link btn btn-info" href="#projects"
+        ><i class="fab fa-react"></i>Work</a
+      >
+      <a class="nav-link btn btn-info" href="#contact"
+        ><i class="far fa-id-card"></i>Contact</a
+      >
     </nav>
   </header>
   <!-- END NAV -->
   <main id="doc">
     <!-- START WELCOME SECTION -->
     <section id="welcome-section">
-      <h1>Hey! I am Jayesh. A Web Developer.</h1>
+      <h1>
+        Hey! I am Jayesh.<br />
+        A Web Developer.
+      </h1>
     </section>
     <!-- END WELCOME SECTION -->
     <!-- START PROJECTS SECTION -->
     <section id="projects">
-      <h2>Following are some of my projects.</h2>
+      <h3>Following are some of my projects.</h3>
       <div class="project-tile">
         <a
           href="https://codepen.io/jj2007/pen/eoKmjW"
@@ -75,15 +91,25 @@
       </div>
     </section>
     <section id="contact">
-      Contact Me!
+      <h4>Get in touch with me</h4>
       <a
-        id="profile=link"
+        id="profile-link"
+        target="_blank"
         href="https://github.wdf.sap.corp/jj2007"
-        class="btn btn-dark"
+        class="btn btn-info"
         ><i class="fab fa-github" role="button"></i>git</a
       >
-      <a href="https://www.linkedin.com/in/jjayeshjadhav/" class="btn btn-dark"
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/jjayeshjadhav/"
+        class="btn btn-info"
         ><i class="fab fa-linkedin"></i>linkedIn</a
+      >
+      <a
+        target="_blank"
+        href="https://www.freecodecamp.org/jj2007"
+        class="btn btn-info"
+        ><i class="fab fa-free-code-camp"></i>fcc</a
       >
     </section>
   </main>
